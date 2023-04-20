@@ -1,6 +1,6 @@
 # asrmarco13 Fastfetch fork
 
-This is a fork of original project Fastfetch.
+This is a fork of original project [Fastfetch](https://github.com/LinusDierheimer/fastfetch).
 
 Fastfetch is a [neofetch](https://github.com/dylanaraps/neofetch)-like tool for fetching system information and displaying them in a pretty way. It is written mainly in C, with performance and customizability in mind. Currently, Linux, Android, FreeBSD, MacOS and Windows 7+ are supported.
 
