@@ -1,14 +1,23 @@
 #include "logo.h"
 
-#define FF_LOGO_INIT static FFlogo logo; static bool init = false; if(init) return &logo; init = true;
-#define FF_LOGO_NAMES(...) static const char* names[] = (const char*[]) { __VA_ARGS__, NULL }; logo.names = names;
+#define FF_LOGO_INIT          \
+    static FFlogo logo;       \
+    static bool init = false; \
+    if (init)                 \
+        return &logo;         \
+    init = true;
+#define FF_LOGO_NAMES(...)                                            \
+    static const char *names[] = (const char *[]){__VA_ARGS__, NULL}; \
+    logo.names = names;
 #define FF_LOGO_LINES(x) logo.data = x;
-#define FF_LOGO_COLORS(...) static const char* colors[] = (const char*[]) { __VA_ARGS__, NULL }; logo.builtinColors = colors;
+#define FF_LOGO_COLORS(...)                                            \
+    static const char *colors[] = (const char *[]){__VA_ARGS__, NULL}; \
+    logo.builtinColors = colors;
 #define FF_LOGO_COLOR_KEYS(x) logo.colorKeys = x;
 #define FF_LOGO_COLOR_TITLE(x) logo.colorTitle = x;
 #define FF_LOGO_RETURN return &logo;
 
-const FFlogo* ffLogoBuiltinGetUnknown()
+const FFlogo *ffLogoBuiltinGetUnknown()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("unknown", "question mark", "?")
@@ -30,15 +39,14 @@ const FFlogo* ffLogoBuiltinGetUnknown()
         "\n"
         "         ___\n"
         "        q###r\n"
-        "         \"\""
-    )
+        "         \"\"")
     FF_LOGO_COLORS("")
     FF_LOGO_COLOR_KEYS("")
     FF_LOGO_COLOR_TITLE("")
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoAlmaLinux()
+static const FFlogo *getLogoAlmaLinux()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("almalinux")
@@ -62,21 +70,20 @@ static const FFlogo* getLogoAlmaLinux()
         "              ,c,,;;;:xkkd.\n"
         "                ;kkkkl...\n"
         "                ;kkkkl\n"
-        "                 ,od;";
-    )
+        "                 ,od;";)
     FF_LOGO_COLORS(
-        "31", // red
+        "31",   // red
         "1;33", // yellow
-        "34", // blue
+        "34",   // blue
         "1;32", // light green
-        "36" // cyan
+        "36"    // cyan
     )
-    FF_LOGO_COLOR_KEYS("1;33"); //yellow
-    FF_LOGO_COLOR_TITLE("31"); //red
+    FF_LOGO_COLOR_KEYS("1;33"); // yellow
+    FF_LOGO_COLOR_TITLE("31");  // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoAlpine()
+static const FFlogo *getLogoAlpine()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("alpine", "alpinelinux", "alpine-linux")
@@ -100,17 +107,16 @@ static const FFlogo* getLogoAlpine()
         "    +dddddddddddddddddddddddddddddd+\n"
         "     /dddddddddddddddddddddddddddd/\n"
         "      :dddddddddddddddddddddddddd:\n"
-        "       .hddddddddddddddddddddddh.";
-    )
+        "       .hddddddddddddddddddddddh.";)
     FF_LOGO_COLORS(
-        "34" //blue
+        "34" // blue
     )
-    FF_LOGO_COLOR_KEYS("35"); //magenta
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("35");  // magenta
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoAlpineSmall()
+static const FFlogo *getLogoAlpineSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("alpine_small", "alpine-linux-small")
@@ -120,17 +126,16 @@ static const FFlogo* getLogoAlpineSmall()
         " //   \\  \\\n"
         "///    \\  \\\n"
         "//      \\  \\\n"
-        "         \\"
-    )
+        "         \\")
     FF_LOGO_COLORS(
-        "34" //blue
+        "34" // blue
     )
-    FF_LOGO_COLOR_KEYS("35"); //magenta
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("35");  // magenta
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoAndroid()
+static const FFlogo *getLogoAndroid()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("android")
@@ -152,18 +157,17 @@ static const FFlogo* getLogoAndroid()
         "      `/++MMMMh++hMMMM++/`\n"
         "          MMMMo  oMMMM\n"
         "          MMMMo  oMMMM\n"
-        "          oNMm-  -mMNs"
-    )
+        "          oNMm-  -mMNs")
     FF_LOGO_COLORS(
-        "32", //green
-        "37" //white
+        "32", // green
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoAndroidSmall()
+static const FFlogo *getLogoAndroidSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("android-small", "android_small")
@@ -173,17 +177,16 @@ static const FFlogo* getLogoAndroidSmall()
         "  ,'           ',\n"
         " /    O     O    \\\n"
         "|                 |\n"
-        "'-----------------'"
-    )
+        "'-----------------'")
     FF_LOGO_COLORS(
-        "32" //green
+        "32" // green
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoArch()
+static const FFlogo *getLogoArch()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("arch", "archlinux", "arch-linux")
@@ -206,18 +209,17 @@ static const FFlogo* getLogoArch()
         "  `/ossssso+/:-        -:/+osssso+-\n"
         " `+sso+:-`                 `.-/+oso:\n"
         "`++:.                           `-/+/\n"
-        ".`                                 `/";
-    )
+        ".`                                 `/";)
     FF_LOGO_COLORS(
-        "36", //cyan
-        "36" //cyan
+        "36", // cyan
+        "36"  // cyan
     )
-    FF_LOGO_COLOR_KEYS("36"); //cyan
-    FF_LOGO_COLOR_TITLE("36"); //cyan
+    FF_LOGO_COLOR_KEYS("36");  // cyan
+    FF_LOGO_COLOR_TITLE("36"); // cyan
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoArchSmall()
+static const FFlogo *getLogoArchSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("arch_small", "archlinux_small", "arch-linux-small")
@@ -228,17 +230,16 @@ static const FFlogo* getLogoArchSmall()
         "   /      \\\n"
         "  /   ,,   \\\n"
         " /   |  |   \\\n"
-        "/_-''    ''-_\\"
-    )
+        "/_-''    ''-_\\")
     FF_LOGO_COLORS(
-        "36" //cyan
+        "36" // cyan
     )
-    FF_LOGO_COLOR_KEYS("36"); //cyan
-    FF_LOGO_COLOR_TITLE("36"); //cyan
+    FF_LOGO_COLOR_KEYS("36");  // cyan
+    FF_LOGO_COLOR_TITLE("36"); // cyan
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoArtix()
+static const FFlogo *getLogoArtix()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("artix", "artixlinux", "artix-linux")
@@ -262,17 +263,16 @@ static const FFlogo* getLogoArtix()
         "   'ooooxooi::'`         .:iiixkxxo'\n"
         "  'ooooi:'`                `'';ioxxo'\n"
         " 'i:'`                          '':io'\n"
-        "'`                                   `'";
-    )
+        "'`                                   `'";)
     FF_LOGO_COLORS(
-        "36" //cyan
+        "36" // cyan
     )
-    FF_LOGO_COLOR_KEYS("36"); //cyan
-    FF_LOGO_COLOR_TITLE("36"); //cyan
+    FF_LOGO_COLOR_KEYS("36");  // cyan
+    FF_LOGO_COLOR_TITLE("36"); // cyan
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoArtixSmall()
+static const FFlogo *getLogoArtixSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("artix_small", "artixlinux_small", "artix-linux-small")
@@ -283,17 +283,16 @@ static const FFlogo* getLogoArtixSmall()
         "   /     ',\n"
         "  /      ,`\\\n"
         " /   ,.'`.  \\\n"
-        "/.,'`     `'.\\"
-    )
+        "/.,'`     `'.\\")
     FF_LOGO_COLORS(
-        "36" //cyan
+        "36" // cyan
     )
-    FF_LOGO_COLOR_KEYS("36"); //cyan
-    FF_LOGO_COLOR_TITLE("36"); //cyan
+    FF_LOGO_COLOR_KEYS("36");  // cyan
+    FF_LOGO_COLOR_TITLE("36"); // cyan
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoArcoLinux()
+static const FFlogo *getLogoArcoLinux()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("arco", "arcolinux", "arco-linux")
@@ -317,18 +316,17 @@ static const FFlogo* getLogoArcoLinux()
         "  $1:ooooooooo      $2.-ooooooooooooooooo.\n"
         "  $1ooooooooo-            $2-ooooooooooooo.\n"
         " $1ooooooooo-                $2.-oooooooooo.\n"
-        "$1ooooooooo.                    $2-ooooooooo";
-    )
+        "$1ooooooooo.                    $2-ooooooooo";)
     FF_LOGO_COLORS(
-        "34", //blue
-        "32" //green
+        "34", // blue
+        "32"  // green
     )
-    FF_LOGO_COLOR_KEYS("34"); //green
-    FF_LOGO_COLOR_TITLE("34"); //green
+    FF_LOGO_COLOR_KEYS("34");  // green
+    FF_LOGO_COLOR_TITLE("34"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoBedrock()
+static const FFlogo *getLogoBedrock()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("bedrock", "bedrocklinux", "bedrock-linux")
@@ -349,18 +347,17 @@ static const FFlogo* getLogoBedrock()
         "-------------$2\\\\\\////////////////$1------\n"
         "--------------------------------------\n"
         "--------------------------------------\n"
-        "--------------------------------------"
-    )
+        "--------------------------------------")
     FF_LOGO_COLORS(
-        "90", //grey
-        "37" //white
+        "90", // grey
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("90"); //grey
-    FF_LOGO_COLOR_TITLE("37"); //white
+    FF_LOGO_COLOR_KEYS("90");  // grey
+    FF_LOGO_COLOR_TITLE("37"); // white
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoCachyOS()
+static const FFlogo *getLogoCachyOS()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("cachy", "cachyos", "cachy-linux", "cachyos-linux")
@@ -386,19 +383,18 @@ static const FFlogo* getLogoCachyOS()
         "         $1.====$2++$1==============$2++++++++++*-\n"
         "          $1.===$2+$1==================$2+++++++:\n"
         "           $1.-=======================$2+++:\n"
-        "             $3.........................."
-    )
+        "             $3..........................")
     FF_LOGO_COLORS(
-        "36", //cyan
-        "32", //green
-        "30"  //black
+        "36", // cyan
+        "32", // green
+        "30"  // black
     )
-    FF_LOGO_COLOR_KEYS("36"); //cyan
-    FF_LOGO_COLOR_TITLE("36"); //cyan
+    FF_LOGO_COLOR_KEYS("36");  // cyan
+    FF_LOGO_COLOR_TITLE("36"); // cyan
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoCachyOSSmall()
+static const FFlogo *getLogoCachyOSSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("cachy_small", "cachyos_small", "cachy-linux-small", "cachyos-linux-small")
@@ -410,18 +406,16 @@ static const FFlogo* getLogoCachyOSSmall()
         "\\......\\\n"
         " \\......\\\n"
         "  \\.............../\n"
-        "   \\............./\n"
-    )
+        "   \\............./\n")
     FF_LOGO_COLORS(
-        "36" //cyan
+        "36" // cyan
     )
-    FF_LOGO_COLOR_KEYS("36"); //cyan
-    FF_LOGO_COLOR_TITLE("36"); //cyan
+    FF_LOGO_COLOR_KEYS("36");  // cyan
+    FF_LOGO_COLOR_TITLE("36"); // cyan
     FF_LOGO_RETURN
 }
 
-
-static const FFlogo* getLogoCelOS()
+static const FFlogo *getLogoCelOS()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("cel", "celos", "cel-linux", "celos-linux")
@@ -440,18 +434,17 @@ static const FFlogo* getLogoCelOS()
         "      -ssss$2hmmmmmmmmmmmmmmmmmmmyssss-\n"
         "       $1`/ssssyyyyyyyyyyyyyyyy+`\n"
         "         $1`:osyyyyyyyyyyyyys/`\n"
-        "            $1`.:/+ooooo+:-`"
-    )
+        "            $1`.:/+ooooo+:-`")
     FF_LOGO_COLORS(
-        "35", //magenta
-        "30" //black
+        "35", // magenta
+        "30"  // black
     )
-    FF_LOGO_COLOR_KEYS("36"); //cyan
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("36");  // cyan
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoCentOS()
+static const FFlogo *getLogoCentOS()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("cent", "centos", "cent-linux", "centos-linux")
@@ -474,21 +467,20 @@ static const FFlogo* getLogoCentOS()
         "     $3KKSSA. VKKK $2LJ $1KKKV .4SSKK\n"
         "              $2<><><><>\n"
         "               $2'MKKM'\n"
-        "                 $2''"
-    )
+        "                 $2''")
     FF_LOGO_COLORS(
-        "33", //yellow
-        "32", //green
-        "34", //blue
-        "35", //magenta
-        "37" //white
+        "33", // yellow
+        "32", // green
+        "34", // blue
+        "35", // magenta
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("33"); //yellow
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("33"); // yellow
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoCentOSSmall()
+static const FFlogo *getLogoCentOSSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("cent_small", "centos_small", "cent-linux_small", "cent-linux-small", "centos-linux-small")
@@ -499,20 +491,19 @@ static const FFlogo* getLogoCentOSSmall()
         "$4<---- $3---->\n"
         " $3| / $2|$1 \\ |\n"
         " $3|/__$2|$1__\\|\n"
-        "     $2v"
-    )
+        "     $2v")
     FF_LOGO_COLORS(
-        "33", //yellow
-        "32", //green
-        "34", //blue
-        "35" //magenta
+        "33", // yellow
+        "32", // green
+        "34", // blue
+        "35"  // magenta
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("33"); //yellow
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("33"); // yellow
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoCRUX()
+static const FFlogo *getLogoCRUX()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("CRUX", "crux")
@@ -534,19 +525,18 @@ static const FFlogo* getLogoCRUX()
         "$2xOkkO$10oo$3odOW$2WW$1XkdodOxc:l\n"
         "$2dkkkxkkk$3OKX$2NNNX0Oxx$1xc:cd\n"
         " $2odxxdx$3xllo$2dddooxx$1dc:ldo\n"
-        "   $2lodd$1dolccc$2ccox$1xoloo\n"
-    )
+        "   $2lodd$1dolccc$2ccox$1xoloo\n")
     FF_LOGO_COLORS(
-        "34", //blue
-        "35", //magenta
-        "37" //white
+        "34", // blue
+        "35", // magenta
+        "37"  // white
     )
     FF_LOGO_COLOR_KEYS("35");
     FF_LOGO_COLOR_TITLE("34");
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoCrystalLinux()
+static const FFlogo *getLogoCrystalLinux()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("crystal", "Crystal", "crystal-linux", "Crystal-Linux")
@@ -570,19 +560,16 @@ static const FFlogo* getLogoCrystalLinux()
         "         dysssym\n"
         "       dysssym\n"
         "     dysssym\n"
-        "   dysssym";
-    )
+        "   dysssym";)
     FF_LOGO_COLORS(
-        "35" //magenta
+        "35" // magenta
     )
-    FF_LOGO_COLOR_KEYS("35"); //magenta
-    FF_LOGO_COLOR_TITLE("35"); //magenta
+    FF_LOGO_COLOR_KEYS("35");  // magenta
+    FF_LOGO_COLOR_TITLE("35"); // magenta
     FF_LOGO_RETURN
 }
 
-
-
-static const FFlogo* getLogoDebian()
+static const FFlogo *getLogoDebian()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("debian", "debian-linux")
@@ -603,18 +590,17 @@ static const FFlogo* getLogoDebian()
         "     `$$$$b.\n"
         "       `Y$$$$b.\n"
         "          `\"Y$$b._\n"
-        "             `\"\"\""
-    )
+        "             `\"\"\"")
     FF_LOGO_COLORS(
-        "31", //red
-        "37" //white
+        "31", // red
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("31"); //red
-    FF_LOGO_COLOR_TITLE("31"); //red
+    FF_LOGO_COLOR_KEYS("31");  // red
+    FF_LOGO_COLOR_TITLE("31"); // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoDebianSmall()
+static const FFlogo *getLogoDebianSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("debian_small", "debian-linux-small")
@@ -624,17 +610,16 @@ static const FFlogo* getLogoDebianSmall()
         "|  /    |\n"
         "|  \\___-\n"
         "-_\n"
-        "  --_"
-    )
+        "  --_")
     FF_LOGO_COLORS(
-        "31" //red
+        "31" // red
     )
-    FF_LOGO_COLOR_KEYS("31"); //red
-    FF_LOGO_COLOR_TITLE("31"); //red
+    FF_LOGO_COLOR_KEYS("31");  // red
+    FF_LOGO_COLOR_TITLE("31"); // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoDevuan()
+static const FFlogo *getLogoDevuan()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("devuan", "devuan-linux")
@@ -653,17 +638,16 @@ static const FFlogo* getLogoDevuan()
         " ,db$$$$$$$$$$$$$$b:'`\n"
         ":$$$$$$$$$$$$b:'`\n"
         " `$$$$$bd:''`\n"
-        "   `'''`\n"
-    )
+        "   `'''`\n")
     FF_LOGO_COLORS(
-        "35" //magenta
+        "35" // magenta
     )
-    FF_LOGO_COLOR_KEYS("35"); //magenta
-    FF_LOGO_COLOR_TITLE("35"); //magenta
+    FF_LOGO_COLOR_KEYS("35");  // magenta
+    FF_LOGO_COLOR_TITLE("35"); // magenta
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoDevuanSmall()
+static const FFlogo *getLogoDevuanSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("devuan_small", "devuan-linux-small")
@@ -674,17 +658,16 @@ static const FFlogo* getLogoDevuanSmall()
         "         =@@\n"
         "      :+%@#:\n"
         ".:=+#@@%*:\n"
-        "#@@@#=:\n"
-    )
+        "#@@@#=:\n")
     FF_LOGO_COLORS(
-        "35" //magenta
+        "35" // magenta
     )
-    FF_LOGO_COLOR_KEYS("35"); //magenta
-    FF_LOGO_COLOR_TITLE("35"); //magenta
+    FF_LOGO_COLOR_KEYS("35");  // magenta
+    FF_LOGO_COLOR_TITLE("35"); // magenta
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoDeepin()
+static const FFlogo *getLogoDeepin()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("deepin", "deepin-linux")
@@ -706,17 +689,16 @@ static const FFlogo* getLogoDeepin()
         "    ,dxxxxxxxxxxxxxxxxxxl.     'o,\n"
         "      ,dkkkkkkkkkkkkko;.    .;o;\n"
         "        .;okkkkkdl;.    .,cl:.\n"
-        "            .,:cccccccc:,."
-    )
+        "            .,:cccccccc:,.")
     FF_LOGO_COLORS(
-        "32" //green
+        "32" // green
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoEndeavour()
+static const FFlogo *getLogoEndeavour()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("endeavour", "endeavour-linux", "endeavouros", "endeavouros-linux")
@@ -735,19 +717,18 @@ static const FFlogo* getLogoEndeavour()
         "$2`-////+$1ssssssssssssssssssssssssssso$3++++-\n"
         " $2`..-+$1oosssssssssssssssssssssssso$3+++++/`\n"
         "   $3./++++++++++++++++++++++++++++++/:.\n"
-        "    `:::::::::::::::::::::::::------``"
-    )
+        "    `:::::::::::::::::::::::::------``")
     FF_LOGO_COLORS(
-        "35", //magenta
-        "31", //red
-        "34" //blue
+        "35", // magenta
+        "31", // red
+        "34"  // blue
     )
-    FF_LOGO_COLOR_KEYS("35"); //magenta
-    FF_LOGO_COLOR_TITLE("31"); //red
+    FF_LOGO_COLOR_KEYS("35");  // magenta
+    FF_LOGO_COLOR_TITLE("31"); // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoEnso()
+static const FFlogo *getLogoEnso()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("enso", "uqc")
@@ -770,17 +751,16 @@ static const FFlogo* getLogoEnso()
         "      =###########+=:            =+=:          \n"
         "       .+#############.       .-==:            \n"
         "         .=###########=   ..:--:.              \n"
-        "            .-+######+                         \n"
-    )
+        "            .-+######+                         \n")
     FF_LOGO_COLORS(
-        "37" //white
+        "37" // white
     )
-    FF_LOGO_COLOR_KEYS("37"); //white
-    FF_LOGO_COLOR_TITLE("37"); //white
+    FF_LOGO_COLOR_KEYS("37");  // white
+    FF_LOGO_COLOR_TITLE("37"); // white
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoFedora()
+static const FFlogo *getLogoFedora()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("fedora", "fedora-linux")
@@ -803,18 +783,17 @@ static const FFlogo* getLogoFedora()
         "cccccccc;$2.:odl:.$1;cccccccccccccc:,.\n"
         "ccccccccccccccccccccccccccccc:'.\n"
         ":ccccccccccccccccccccccc:;,..\n"
-        " ':cccccccccccccccc::;,."
-    )
+        " ':cccccccccccccccc::;,.")
     FF_LOGO_COLORS(
-        "34", //blue
-        "37" //white
+        "34", // blue
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoFedoraSmall()
+static const FFlogo *getLogoFedoraSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("fedora_small", "fedora-linux-small")
@@ -827,17 +806,16 @@ static const FFlogo* getLogoFedoraSmall()
         "|  |   |  |\n"
         "|  ',_,'  |\n"
         " '.     ,'\n"
-        "   '''''"
-    )
+        "   '''''")
     FF_LOGO_COLORS(
-        "34" //blue
+        "34" // blue
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoFedoraOld()
+static const FFlogo *getLogoFedoraOld()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("fedora_old", "fedora-old", "fedora-linux-old", "fedora-linux_old")
@@ -858,18 +836,17 @@ static const FFlogo* getLogoFedoraOld()
         ":--$2 :dMNdhhdNMMNo$1------------;\n"
         ":---$2:sdNMMMMNds:$1------------:\n"
         ":------$2:://:$1-------------::\n"
-        ":---------------------://"
-    )
+        ":---------------------://")
     FF_LOGO_COLORS(
-        "34", //blue
-        "37" //white
+        "34", // blue
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoFreeBSD()
+static const FFlogo *getLogoFreeBSD()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("freebsd")
@@ -888,18 +865,17 @@ static const FFlogo* getLogoFreeBSD()
         "    $1--                      $2-.\n"
         "     $1`:`                  $2`:`\n"
         "       .--             `--.\n"
-        "          .---.....----."
-    )
+        "          .---.....----.")
     FF_LOGO_COLORS(
-        "37", //white
-        "31" //red
+        "37", // white
+        "31"  // red
     )
-    FF_LOGO_COLOR_KEYS("31") //red
-    FF_LOGO_COLOR_TITLE("31") //red
+    FF_LOGO_COLOR_KEYS("31")  // red
+    FF_LOGO_COLOR_TITLE("31") // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoGaruda()
+static const FFlogo *getLogoGaruda()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("garuda", "garuda-linux")
@@ -921,17 +897,16 @@ static const FFlogo* getLogoGaruda()
         "    dxx8o                      .@@;.\n"
         "      dx88                   .t@x.\n"
         "        d:SS@8ba89aa67a853Sxxad.\n"
-        "          .d988999889889899dd."
-    )
+        "          .d988999889889899dd.")
     FF_LOGO_COLORS(
-        "31" //red
+        "31" // red
     )
-    FF_LOGO_COLOR_KEYS("31"); //red
-    FF_LOGO_COLOR_TITLE("31"); //red
+    FF_LOGO_COLOR_KEYS("31");  // red
+    FF_LOGO_COLOR_TITLE("31"); // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoGarudaSmall()
+static const FFlogo *getLogoGarudaSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("garuda_small", "garudalinux_small", "garuda-linux-small")
@@ -940,17 +915,120 @@ static const FFlogo* getLogoGarudaSmall()
         "   .'   ,  '.\n"
         " .'    '-----|\n"
         "'.   -----,\n"
-        "  '.____.'"
-    )
+        "  '.____.'")
     FF_LOGO_COLORS(
-        "31" //red
+        "31" // red
     )
-    FF_LOGO_COLOR_KEYS("31"); //red
-    FF_LOGO_COLOR_TITLE("31"); //red
+    FF_LOGO_COLOR_KEYS("31");  // red
+    FF_LOGO_COLOR_TITLE("31"); // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoGentoo()
+static const FFlogo *getLogoGarudaDragonized()
+{
+    FF_LOGO_INIT
+    FF_LOGO_NAMES("garuda-dragonized", "garuda-dragonized-linux")
+    FF_LOGO_LINES(
+        "                                   .::---=========--::.\n"
+        "                             :-=+*#######################*=-:\n"
+        "                        .-=*#######*+==--::::::::--==+*#####%%#+-:\n"
+        "                     :=*#####+=-:                        .-=*#%%%%#+-\n"
+        "                  :+*###*+-.                                  .-*#%%%%*-\n"
+        "                -***#*=:                                          :+#%%%#+.\n"
+        "              =*****-                     -                          -*%%%%+.\n"
+        "            =****+::                     .#*.                          :*%%%%+.\n"
+        "          -****+.  +**+====--::::..      .###-                           .*%%%%+\n"
+        "        .+****+     =*##############*+:   *####-                           :*%%%#:\n"
+        "       :********-.    :=**#############*. :######=.                          -#%%%=\n"
+        "      =************=-:.   .:-==+**######*  :#######*-                         .*%%%*\n"
+        "     =**************####**++=-:       ..:   .*########+:                        *%%%*\n"
+        "    -***+:=*********#######*+-:.    ..........+##########+.                      +%%%+\n"
+        "   :****:   .-=+****####+-.  :-=*##########################*-                     *%%%=\n"
+        "   ******+-.             :=+################################%#-                    #%%%:\n"
+        "  =***********++===   .=*###################################%%%*:                  :%%%#\n"
+        " .***************=  :+######################################%%%%%*.                 +%%%-\n"
+        " -***:-+*******+. :+########################################%%%%%%%+.               .%%%*\n"
+        " +***:   .:---:  :===#######################################%%%%%%%%%+.              #%%%\n"
+        " *****+=--:::::.   :*#########*******######################+=+#%%%%%%%%+:            +%%%.\n"
+        " *************=. :+*#####*=-.  .:-----:--=*##################+--*%%%%%#:             =%%%:\n"
+        " *********+=: .-****#*+-. .-+*####**+=--:   .=##############%%%#*#%%%%%-             -%%%:\n"
+        " ***+.....:-=*****+=:  :=*####*-.  ::----.   .*#############%%%%%%%%%%%%:            =%%%:\n"
+        " ***+  -=+++++=-:   .=*####*=. :=*#####+:    .=#############%%%%%%%%%%%%%-           +%%%.\n"
+        " +***-            .+######=  :*######-          -###########%%%%%%%%%%%%%%=  -#      #%%%\n"
+        " -*****++++=.   :+**####*: .+######+.            +##########%%%%%%%%%%%%%%%%%%%-    .%%%*\n"
+        " .*******+-   -*****###=   -######*             :*#*****####%%%%%%%%%%%%%%%%%%%*    *%%%-\n"
+        "  =***+.   .=*******#*:  :- -*####=                     :*=-:::-=#%%%%%%%%%%%%%*   -%%%#\n"
+        "   ****   =*****++**+   -##*- -*##+                               :#%%%%%%%%%%%-  .%%%%:\n"
+        "   -***+        .**:   :#####*- .-*:                                #%%%%%%%*-+   #%%%+\n"
+        "    -***=      =+-    .*######*                                    .#%%%%%%-    .#%%%*\n"
+        "     =***=    :.      +#######+                                  :+%%%%%*=     :#%%%#\n"
+        "      =***+     .-:  :########+                                 =++==-:       =%%%%*\n"
+        "       -****-:=***-  =########+                                             -#%%%%+\n"
+        "        :*********.  *########*                                           -#%%%%%-\n"
+        "          =*******  .##########.                                        =#%%%%%+\n"
+        "           .=*****. -##########+                                     :+%%%%%%*:\n"
+        "             .=****+*###########-                                 :+#%%%%%%*:\n"
+        "               .=***#############-                           .:=*#%%%%%%%+:\n"
+        "                  -+##############+   .:..            .::=+*#%%%%%%%%%#=.\n"
+        "                    .-+#############- .+####################%%%%%%%*=.\n"
+        "                        :=+*#########*=:+###################%%#*=-\n"
+        "                            .:=+*#########################*=-:\n"
+        "                                  ..:--=============-::.")
+    FF_LOGO_COLORS(
+        "31" // red
+    )
+    FF_LOGO_COLOR_KEYS("31");  // red
+    FF_LOGO_COLOR_TITLE("31"); // red
+    FF_LOGO_RETURN
+}
+
+static const FFlogo *getLogoGarudaEagle()
+{
+    FF_LOGO_INIT
+    FF_LOGO_NAMES("garuda-eagle", "garuda-eagle-linux")
+    FF_LOGO_LINES(
+        "                                        .-++==------------------:::\n"
+        "                                      :-=++++*****+++++***###%%%%%%#-\n"
+        "                                   .:-===++++***####%%######%%%###**+=.\n"
+        "                                 .:--====++++***####%%%%%%%@@%#**++===-.\n"
+        "                               .::---====++++*****#####%%%%%@@%%%#*+==-:.\n"
+        "                             .::::----=====++++**#%%@@@@@@%@%%###**+++===-:.\n"
+        "                           ....::::----====++++*****##%.#@@%@%####***++==-==-:.\n"
+        "                         .::----====+++****###%%%%@@@@@=.:-+@@@@@%#*++==--+==-:=+=.\n"
+        "                       :---====+++++****######%%%%%@@@@%##%@@%%##*+++==-:=**##**++=:\n"
+        "                    .::----=====++++*****#####%%%%%@@@@@**###%%##*===--::*####**++=-:\n"
+        "                 .:::::----====++++******#####%%%%%%%@@@*+***##%%%%#*=:::@%%##**+==--:.\n"
+        "               ...:::----=====+++++******###################***********==*%%%##*++==-::.\n"
+        "             ..::::------=====++++++*****+***#######%%%%%########*******++++*#%%#**++=-:.\n"
+        "            ..::::::-----=====++++*****++*+***#+=++**==+**#+.::::----======+++++***++==-\n"
+        "           ....:::::---===++++**+++++*++**+=***#*=++**=++*#*                       **++=\n"
+        "          ...:::---==++++++++++++++**+++**+==*#*##++***++*##.                      ##**=\n"
+        "        .:::--===++==========++++**+=+++*#*+==+####*+***+*##:                     :%%#=\n"
+        "      :---======--====---====+++**+=+*+*##+*===+*####*****##=                     =@+.\n"
+        "    :===---:----=-----=====+++***==+*++*#%+*+++=+**###**#*##*                     :\n"
+        "  .:..::::----::::-=======++***+==+*+=+*#%++*=+==++**###*###%\n"
+        "     ::---:...:--===-===++****=-=+**==+*#%*+*+=+==+++**#####%:\n"
+        "    .-:.  .::-===---==+++**#*--=+*#===+*#%*++*=++=+++++**###%=\n"
+        "        .:--==----===++***#=--=+**+-=++*#%*=+*+=++=++++++*###*\n"
+        "       :-==-::--===++***#*---=+*##:-=+**#%#=++*=+++=++*+=+**##\n"
+        "      :=:.  --===+++**##+:-==+*##-:-=+*##%%==+++=+++=++*+==++.\n"
+        "     ..     .==+++**###-:-==+*##+.:-=+*#%%%-=++*=++**++***=:\n"
+        "             -++***##+::-==+*###.:--=+*#%@@-==+++=++*+++**+\n"
+        "              +**###=.:-==+*##%-.:-==+*#%@@--=++*==+**+++-\n"
+        "              :###*:.:-==+*##%+ .:-=++*#%@@=-==+++=++**+\n"
+        "               +%=  .:-=+*##%%  .:-=++*#%@@+--=++*==++**.\n"
+        "                :      .-*#%@-  .:-=+**#%@@*:-==++*==-.\n"
+        "                          .=+    .:-+*##%@@#:--=++*-\n"
+        "                                      :-+#@%  ..::--")
+    FF_LOGO_COLORS(
+        "34" // blue
+    )
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
+    FF_LOGO_RETURN
+}
+
+static const FFlogo *getLogoGentoo()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("gentoo", "gentoo-linux")
@@ -972,18 +1050,17 @@ static const FFlogo* getLogoGentoo()
         "yM$2MNNNNNNNmmmmmNNMmhs+/$1-`\n"
         "/h$2MMNNNNNNNNMNdhs++/$1-`\n"
         "`/$2ohdmmddhys+++/:$1.`\n"
-        "  `-//////:--."
-    )
+        "  `-//////:--.")
     FF_LOGO_COLORS(
-        "35", //magenta
-        "37" //white
+        "35", // magenta
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("35"); //magenta
-    FF_LOGO_COLOR_TITLE("35"); //magenta
+    FF_LOGO_COLOR_KEYS("35");  // magenta
+    FF_LOGO_COLOR_TITLE("35"); // magenta
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoGentooSmall()
+static const FFlogo *getLogoGentooSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("gentoo_small", "gentoo-linux-small")
@@ -994,18 +1071,17 @@ static const FFlogo* getLogoGentooSmall()
         " $2\\        )\n"
         " /      _/\n"
         "(     _-\n"
-        "\\____-"
-    )
+        "\\____-")
     FF_LOGO_COLORS(
-        "35", //magenta
-        "37" //white
+        "35", // magenta
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("35"); //magenta
-    FF_LOGO_COLOR_TITLE("35"); //magenta
+    FF_LOGO_COLOR_KEYS("35");  // magenta
+    FF_LOGO_COLOR_TITLE("35"); // magenta
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoKDENeon()
+static const FFlogo *getLogoKDENeon()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("kde", "kde-neon", "neon")
@@ -1028,17 +1104,16 @@ static const FFlogo* getLogoKDENeon()
         "    `:/:     `.----//----.`     :/-\n"
         "      .-:.`        ``        `-:-.\n"
         "         `---.``   ``   `.---.`\n"
-        "             `..---+/---..`"
-    )
+        "             `..---+/---..`")
     FF_LOGO_COLORS(
-        "32" //green
+        "32" // green
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoKISSLinux()
+static const FFlogo *getLogoKISSLinux()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("kiss", "kiss-linux", "kisslinux")
@@ -1049,19 +1124,18 @@ static const FFlogo* getLogoKISSLinux()
         "  / $2__$3  \\    \n"
         " ( $1/  \\ $3/|   \n"
         "$1_$3/\\ $2__)$3/$1_$3)   \n"
-        "$1\\/$3-____$1\\/$2    \n"
-    )
+        "$1\\/$3-____$1\\/$2    \n")
     FF_LOGO_COLORS(
-        "35", //magenta
-        "37", //white
-        "34" //blue
+        "35", // magenta
+        "37", // white
+        "34"  // blue
     )
-    FF_LOGO_COLOR_KEYS("35"); //magenta
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("35");  // magenta
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoKubuntu()
+static const FFlogo *getLogoKubuntu()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("kubuntu", "kubuntu-linux", "kde-ubuntu", "ubuntu-kde", "ubuntu-plasma")
@@ -1085,46 +1159,44 @@ static const FFlogo* getLogoKubuntu()
         "    -syyyyyyyyy$2dMMMy$1syyy$2dMMMy$1syyyys-\n"
         "      -oyyyyyyy$2dMMy$1yyyyyysosyyyyo-\n"
         "        ./oyyyyyyyyyyyyyyyyyyo/.\n"
-        "           `.:/oosyyyysso/:.`"
-    )
+        "           `.:/oosyyyysso/:.`")
     FF_LOGO_COLORS(
-        "34", //blue
-        "37" //white
+        "34", // blue
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoLangitKetujuh()
+static const FFlogo *getLogoLangitKetujuh()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("l7", "langitketujuh", "LangitKetujuh")
     FF_LOGO_LINES(
-	"\n"
-	"\n"
-	"   $2. '7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7\n"
-	"   $2L7.   '7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7\n"
-	"   $2L7L7L      7L7L7L7L7L7L7L7L7L7L7L7L7L7\n"
-	"   $2L7L7L7                          L7L7L7\n"
-	"   $2L7L7L7           'L7L7L7L7L7L7L7L7L7L7\n"
-	"   $2L7L7L7               'L7L7L7L7L7L7L7L7\n"
-	"   $2L7L7L7                   'L7L7L7L7L7L7\n"
-	"   $2L7L7L7                          L7L7L7\n"
-	"   $2L7L7L7L7L7L7L7L7L7L7LL7L7L7.    '7L7L7\n"
-	"   $2L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L.   'L7\n"
-	"   $2L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7.  '\n"
-    )
+        "\n"
+        "\n"
+        "   $2. '7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7\n"
+        "   $2L7.   '7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7\n"
+        "   $2L7L7L      7L7L7L7L7L7L7L7L7L7L7L7L7L7\n"
+        "   $2L7L7L7                          L7L7L7\n"
+        "   $2L7L7L7           'L7L7L7L7L7L7L7L7L7L7\n"
+        "   $2L7L7L7               'L7L7L7L7L7L7L7L7\n"
+        "   $2L7L7L7                   'L7L7L7L7L7L7\n"
+        "   $2L7L7L7                          L7L7L7\n"
+        "   $2L7L7L7L7L7L7L7L7L7L7LL7L7L7.    '7L7L7\n"
+        "   $2L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L.   'L7\n"
+        "   $2L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7L7.  '\n")
     FF_LOGO_COLORS(
-        "34", //blue
-        "37" //white
+        "34", // blue
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoLinux()
+static const FFlogo *getLogoLinux()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("linux", "linux-generic")
@@ -1140,19 +1212,18 @@ static const FFlogo* getLogoLinux()
         "  $3##$2#$1###########$2##$3#\n"
         "$3######$2#$1#######$2#$3######\n"
         "$3#######$2#$1#####$2#$3#######\n"
-        "  $3#####$2#######$3#####"
-    )
+        "  $3#####$2#######$3#####")
     FF_LOGO_COLORS(
-        "37", //white
-        "30", //black
-        "33" //yellow
+        "37", // white
+        "30", // black
+        "33"  // yellow
     )
-    FF_LOGO_COLOR_KEYS("37"); //white
-    FF_LOGO_COLOR_TITLE("37"); //white
+    FF_LOGO_COLOR_KEYS("37");  // white
+    FF_LOGO_COLOR_TITLE("37"); // white
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoMacOS()
+static const FFlogo *getLogoMacOS()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("macos", "mac", "apple", "darwin", "osx")
@@ -1173,21 +1244,20 @@ static const FFlogo* getLogoMacOS()
         "  'XMMMMMMMMMMMMMMMMMMMMMMMMK.\n"
         "    $5kMMMMMMMMMMMMMMMMMMMMMMd\n"
         "     ;KMMMMMMMWXXWMMMMMMMk.\n"
-        "       \"cooc*\"    \"*coo'\""
-    )
+        "       \"cooc*\"    \"*coo'\"")
     FF_LOGO_COLORS(
-        "32", //green
-        "33", //yellow
-        "31", //red
-        "35", //magenta
-        "34" //blue
+        "32", // green
+        "33", // yellow
+        "31", // red
+        "35", // magenta
+        "34"  // blue
     )
-    FF_LOGO_COLOR_KEYS("33"); //yellow
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("33");  // yellow
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoManjaro()
+static const FFlogo *getLogoManjaro()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("manjaro", "manjaro-linux")
@@ -1205,17 +1275,16 @@ static const FFlogo* getLogoManjaro()
         "████████  ████████  ████████\n"
         "████████  ████████  ████████\n"
         "████████  ████████  ████████\n"
-        "████████  ████████  ████████"
-    )
+        "████████  ████████  ████████")
     FF_LOGO_COLORS(
-        "32" //green
+        "32" // green
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoManjaroSmall()
+static const FFlogo *getLogoManjaroSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("manjaro_small", "manjaro-linux-small")
@@ -1226,17 +1295,16 @@ static const FFlogo* getLogoManjaroSmall()
         "|||| |||| ||||\n"
         "|||| |||| ||||\n"
         "|||| |||| ||||\n"
-        "|||| |||| ||||"
-    )
+        "|||| |||| ||||")
     FF_LOGO_COLORS(
-        "32" //green
+        "32" // green
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoMint()
+static const FFlogo *getLogoMint()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("mint", "linuxmint", "mint-linux", "linux-mint")
@@ -1259,18 +1327,17 @@ static const FFlogo* getLogoMint()
         "     '-MMMM$1.-MMMMMMMMMMMMMMM-.$2MMMM-'\n"
         "       '.-MMMM$1``--:::::--``$2MMMM-.'\n"
         "            '-MMMMMMMMMMMMM-'\n"
-        "               ``-:::::-``"
-    )
+        "               ``-:::::-``")
     FF_LOGO_COLORS(
-        "32", //green
-        "37" //white
+        "32", // green
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoMintSmall()
+static const FFlogo *getLogoMintSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("mint_small", "linuxmint_small", "mint-linux-small")
@@ -1281,18 +1348,17 @@ static const FFlogo* getLogoMintSmall()
         "  | $2| | | | $1|\n"
         "  | $2| | | | $1|\n"
         "  | $2\\__$2___/ $1|\n"
-        "  \\_________/"
-    )
+        "  \\_________/")
     FF_LOGO_COLORS(
-        "32", //green
-        "37" //white
+        "32", // green
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoMintOld()
+static const FFlogo *getLogoMintOld()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("mint_old", "mint-old", "mint-linux_old", "mint-linux-old", "linux-mint_old", "linux-mint-old")
@@ -1312,18 +1378,17 @@ static const FFlogo* getLogoMintOld()
         "    -dMNs-$2``-::::-------.``    $1dMM\n"
         "    `/dMNmy+/:-------------:/yMMM\n"
         "      ./ydNMMMMMMMMMMMMMMMMMMMMM\n"
-        "          .MMMMMMMMMMMMMMMMMMM"
-    )
+        "          .MMMMMMMMMMMMMMMMMMM")
     FF_LOGO_COLORS(
-        "32", //green
-        "37" //white
+        "32", // green
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoMsys2()
+static const FFlogo *getLogoMsys2()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("msys2")
@@ -1352,19 +1417,18 @@ static const FFlogo* getLogoMsys2()
         "                               :.B@.  7@@5     :.B@.\n"
         "                             !PYY5Y   :&@^   !PYY5Y \n"
         "                                      ~@Y\n"
-        "                                      !5:"
-    )
+        "                                      !5:")
     FF_LOGO_COLORS(
-        "35", //magenta
-        "37", //white
-        "31" //red
+        "35", // magenta
+        "37", // white
+        "31"  // red
     )
-    FF_LOGO_COLOR_KEYS("35"); //magenta
-    FF_LOGO_COLOR_TITLE("31"); //red
+    FF_LOGO_COLOR_KEYS("35");  // magenta
+    FF_LOGO_COLOR_TITLE("31"); // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoWindows11()
+static const FFlogo *getLogoWindows11()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("Windows 11", "Windows Server 2022")
@@ -1386,17 +1450,16 @@ static const FFlogo* getLogoWindows11()
         "/////////////////  /////////////////\n"
         "/////////////////  /////////////////\n"
         "/////////////////  /////////////////\n"
-        "/////////////////  /////////////////"
-    )
+        "/////////////////  /////////////////")
     FF_LOGO_COLORS(
-        "34" //blue
+        "34" // blue
     )
-    FF_LOGO_COLOR_KEYS("33"); //yellow
-    FF_LOGO_COLOR_TITLE("36"); //cyan
+    FF_LOGO_COLOR_KEYS("33");  // yellow
+    FF_LOGO_COLOR_TITLE("36"); // cyan
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoWindows11Small()
+static const FFlogo *getLogoWindows11Small()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("Windows 11_small", "Windows 11-small")
@@ -1410,17 +1473,16 @@ static const FFlogo* getLogoWindows11Small()
         "lllllllll  lllllllll\n"
         "lllllllll  lllllllll\n"
         "lllllllll  lllllllll\n"
-        "lllllllll  lllllllll\n"
-    )
+        "lllllllll  lllllllll\n")
     FF_LOGO_COLORS(
-        "34" //blue
+        "34" // blue
     )
-    FF_LOGO_COLOR_KEYS("33"); //yellow
-    FF_LOGO_COLOR_TITLE("36"); //cyan
+    FF_LOGO_COLOR_KEYS("33");  // yellow
+    FF_LOGO_COLOR_TITLE("36"); // cyan
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoWindows8()
+static const FFlogo *getLogoWindows8()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("Windows 8", "Windows 8.1", "Windows 10", "Windows Server 2012", "Windows Server 2012 R2", "Windows Server 2016", "Windows Server 2019")
@@ -1443,17 +1505,16 @@ static const FFlogo* getLogoWindows8()
         "`'ccllllllllll  lllllllllllllllllll\n"
         "       `' \\*::  :ccllllllllllllllll\n"
         "                       ````''*::cll\n"
-        "                                 ``"
-    )
+        "                                 ``")
     FF_LOGO_COLORS(
-        "36" //cyan
+        "36" // cyan
     )
-    FF_LOGO_COLOR_KEYS("33"); //yellow
-    FF_LOGO_COLOR_TITLE("37"); //white
+    FF_LOGO_COLOR_KEYS("33");  // yellow
+    FF_LOGO_COLOR_TITLE("37"); // white
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoWindows()
+static const FFlogo *getLogoWindows()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("Windows", "Windows 7", "Windows Server 2008", "Windows Server 2008 R2")
@@ -1473,20 +1534,19 @@ static const FFlogo* getLogoWindows()
         "$3 E::::::::zt33L$4 @EEEtttt::::z3F\n"
         "$3{3=*^```\"*4E3)$4 ;EEEtttt:::::tZ`\n"
         "$3             `$4 :EEEEtttt::::z7\n"
-        "                 \"VEzjt:;;z>*`"
-    )
+        "                 \"VEzjt:;;z>*`")
     FF_LOGO_COLORS(
-        "31", //red
-        "32", //green
-        "34", //blue
-        "33" //yellow
+        "31", // red
+        "32", // green
+        "34", // blue
+        "33"  // yellow
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoNixOS()
+static const FFlogo *getLogoNixOS()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("nixos", "nix", "nixos-linux", "nix-linux", "nix-os", "nix_os", "nix_os_linux")
@@ -1510,18 +1570,17 @@ static const FFlogo* getLogoNixOS()
         "$1           ▟██████▙       $2▜███▙\n"
         "$1          ▟███▛▜███▙       $2▜███▙\n"
         "$1         ▟███▛  ▜███▙       $2▜███▙\n"
-        "$1         ▝▀▀▀    ▀▀▀▀▘       $2▀▀▀▘"
-    )
+        "$1         ▝▀▀▀    ▀▀▀▀▘       $2▀▀▀▘")
     FF_LOGO_COLORS(
-        "34", //blue
-        "36" //cyan
+        "34", // blue
+        "36"  // cyan
     )
-    FF_LOGO_COLOR_KEYS("36"); //cyan
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("36");  // cyan
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoNixOsOld()
+static const FFlogo *getLogoNixOsOld()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("nixos_old", "nix-old", "nixos-old", "nix_old", "nix-os-old", "nix_os_old")
@@ -1553,18 +1612,17 @@ static const FFlogo* getLogoNixOsOld()
         "$1               $1/#####/  \\######\\$2      \\######\\\n"
         "$1              $1/#####/    \\######\\$2      \\######\n"
         "$1              $1\\####/      \\######\\$2      \\####/\n"
-        "$1               $1¯¯¯¯        ¯¯¯¯¯¯¯$2       ¯¯¯¯"
-    )
+        "$1               $1¯¯¯¯        ¯¯¯¯¯¯¯$2       ¯¯¯¯")
     FF_LOGO_COLORS(
-        "34", //blue
-        "36" //cyan
+        "34", // blue
+        "36"  // cyan
     )
-    FF_LOGO_COLOR_KEYS("36"); //cyan
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("36");  // cyan
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoNixOsSmall()
+static const FFlogo *getLogoNixOsSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("nixos_small", "nix-small", "nixos-small", "nix_small", "nix-os-small", "nix_os_small")
@@ -1575,17 +1633,16 @@ static const FFlogo* getLogoNixOsSmall()
         "==//     //==\n"
         " //\\\\___//\n"
         "// /\\\\  \\\\==\n"
-        "  // \\\\  \\\\"
-    )
+        "  // \\\\  \\\\")
     FF_LOGO_COLORS(
-        "34" //blue
+        "34" // blue
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoNobara()
+static const FFlogo *getLogoNobara()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("nobara", "nobara-linux");
@@ -1606,17 +1663,16 @@ static const FFlogo* getLogoNobara()
         "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
         "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠛⠉⠉⠛⠛⢿⣿⣿⠀⠀⠀⠀⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿\n"
         "⠘⢿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⠟⠁\n"
-        "  ⠈⠙⠛⠛⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠛⠛⠛⠉⠁\n"
-    )
+        "  ⠈⠙⠛⠛⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠛⠛⠛⠉⠁\n")
     FF_LOGO_COLORS(
         "37" // white
     )
-    FF_LOGO_COLOR_KEYS("37"); // white
+    FF_LOGO_COLOR_KEYS("37");  // white
     FF_LOGO_COLOR_TITLE("37"); // white
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoOpenSuse()
+static const FFlogo *getLogoOpenSuse()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("suse", "opensuse", "open_suse", "open-suse", "suse-linux")
@@ -1638,18 +1694,17 @@ static const FFlogo* getLogoOpenSuse()
         "    l0Ko.                    .c00l'\n"
         "     'l0Kk:.              .;xK0l'\n"
         "        'lkK0xl:;,,,,;:ldO0kl'\n"
-        "            '^:ldxkkkkxdl:^'"
-    )
+        "            '^:ldxkkkkxdl:^'")
     FF_LOGO_COLORS(
-        "32", //green
-        "37" //white
+        "32", // green
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoOpenSuseSmall()
+static const FFlogo *getLogoOpenSuseSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("suse_small", "opensuse_small", "open_suse_small", "open-suse_small")
@@ -1660,17 +1715,16 @@ static const FFlogo* getLogoOpenSuseSmall()
         "     \\__/ |\n"
         "   _______|\n"
         "   \\_______\n"
-        "__________/"
-    )
+        "__________/")
     FF_LOGO_COLORS(
-        "32" //green
+        "32" // green
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoOpenSuseLeap()
+static const FFlogo *getLogoOpenSuseLeap()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("opensuse_leap", "open_suse_leap", "opensuse-leap", "open-suse-leap", "suse_leap", "suse-leap", "opensuseleap")
@@ -1690,17 +1744,16 @@ static const FFlogo* getLogoOpenSuseLeap()
         "          `:+ooooo+-:+oooooo:`\n"
         "             ./oooooooooo/.\n"
         "                -/oooo+:`\n"
-        "                  `:/."
-    )
+        "                  `:/.")
     FF_LOGO_COLORS(
-        "37" //white
+        "37" // white
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoOpenSuseTumbleweed()
+static const FFlogo *getLogoOpenSuseTumbleweed()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("opensuse_tumbleweed", "open_suse_tumbleweed", "opensuse-tumbleweed", "open-suse-tumbleweed", "suse_tumbleweed", "suse-tumbleweed", "opensusetumbleweed")
@@ -1717,17 +1770,16 @@ static const FFlogo* getLogoOpenSuseTumbleweed()
         " .XM0.           ,OMMK,    OMMMK.              .XMK\n"
         "   oWMO:.    .;xNMMk,       NNNMKl.          .xWMx\n"
         "     :ONMMNXMMMKx;          .  ,xNMWKkxllox0NMWk,\n"
-        "         .....                    .:dOOXXKOxl,"
-    )
+        "         .....                    .:dOOXXKOxl,")
     FF_LOGO_COLORS(
-        "37" //white
+        "37" // white
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoOpenMandriva()
+static const FFlogo *getLogoOpenMandriva()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("openmandriva", "open-mandriva", "open_mandriva")
@@ -1755,18 +1807,16 @@ static const FFlogo* getLogoOpenMandriva()
         "            .:+syhhhhhhhhys+:-`\n"
         "                ``....``"
 
-
-
     )
     FF_LOGO_COLORS(
-        "34" //blue
+        "34" // blue
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoPop()
+static const FFlogo *getLogoPop()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("pop", "popos", "pop_os", "pop-linux")
@@ -1790,18 +1840,17 @@ static const FFlogo* getLogoPop()
         "    /////$2767676767676767676767$1/////\n"
         "      ///////////////////////////\n"
         "         /////////////////////\n"
-        "             /////////////"
-    )
+        "             /////////////")
     FF_LOGO_COLORS(
-        "36", //cyan
-        "37" //white
+        "36", // cyan
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("36"); //cyan
-    FF_LOGO_COLOR_TITLE("36"); //cyan
+    FF_LOGO_COLOR_KEYS("36");  // cyan
+    FF_LOGO_COLOR_TITLE("36"); // cyan
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoParabola()
+static const FFlogo *getLogoParabola()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("parabola", "parabola-gnulinux")
@@ -1821,17 +1870,16 @@ static const FFlogo* getLogoParabola()
         "                        `+o/.\n"
         "                        /+-\n"
         "                       //`\n"
-        "                      -."
-    )
+        "                      -.")
     FF_LOGO_COLORS(
-        "35" //magenta
+        "35" // magenta
     )
-    FF_LOGO_COLOR_KEYS("35"); //magenta
-    FF_LOGO_COLOR_TITLE("35"); //magenta
+    FF_LOGO_COLOR_KEYS("35");  // magenta
+    FF_LOGO_COLOR_TITLE("35"); // magenta
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoParabolaSmall()
+static const FFlogo *getLogoParabolaSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("parabola_small", "parabola-gnulinux_small")
@@ -1841,17 +1889,16 @@ static const FFlogo* getLogoParabolaSmall()
         "          /  .`\n"
         "         / .`\n"
         "        /.`\n"
-        "       /`"
-    )
+        "       /`")
     FF_LOGO_COLORS(
-        "35" //magenta
+        "35" // magenta
     )
-    FF_LOGO_COLOR_KEYS("35"); //magenta
-    FF_LOGO_COLOR_TITLE("35"); //magenta
+    FF_LOGO_COLOR_KEYS("35");  // magenta
+    FF_LOGO_COLOR_TITLE("35"); // magenta
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoPopSmall()
+static const FFlogo *getLogoPopSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("pop_small", "popos_small", "pop_os_small", "pop-linux-small")
@@ -1863,19 +1910,20 @@ static const FFlogo* getLogoPopSmall()
         "   \\  ___\\  /_/\n"
         "    \\ \\    _\n"
         "   __\\_\\__(_)_\n"
-        "  (___________)`"
-    )
+        "  (___________)`")
     FF_LOGO_COLORS(
-        "36" //cyan
+        "36" // cyan
     )
-    FF_LOGO_COLOR_KEYS("36"); //cyan
-    FF_LOGO_COLOR_TITLE("36"); //cyan
+    FF_LOGO_COLOR_KEYS("36");  // cyan
+    FF_LOGO_COLOR_TITLE("36"); // cyan
     FF_LOGO_RETURN
 }
-static const FFlogo* getLogoRaspbian()
+static const FFlogo *getLogoRaspbian()
 {
     FF_LOGO_INIT
-    FF_LOGO_NAMES("raspbian", "raspi", "raspberrypi" "raspberrypios"  "pios")
+    FF_LOGO_NAMES("raspbian", "raspi", "raspberrypi"
+                                       "raspberrypios"
+                                       "pios")
     FF_LOGO_LINES(
         "   $2`.::///+:/-.        --///+//-:`\n"
         " `+oooooooooooo:   `+oooooooooooo:\n"
@@ -1899,21 +1947,22 @@ static const FFlogo* getLogoRaspbian()
         "    `-:::::`   ..--.`   ::::::.\n"
         "      `...`  `...--..`  `...`\n"
         "            .::::::::::\n"
-        "             `.-::::-`"
-    )
+        "             `.-::::-`")
     FF_LOGO_COLORS(
-        "31", //red
-        "32" //green
+        "31", // red
+        "32"  // green
     )
-    FF_LOGO_COLOR_KEYS("31"); //red
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("31");  // red
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoRaspbianSmall()
+static const FFlogo *getLogoRaspbianSmall()
 {
     FF_LOGO_INIT
-    FF_LOGO_NAMES("raspbian_small", "raspi_small", "raspberrypi_small" "raspberrypios_small" "pios_small")
+    FF_LOGO_NAMES("raspbian_small", "raspi_small", "raspberrypi_small"
+                                                   "raspberrypios_small"
+                                                   "pios_small")
     FF_LOGO_LINES(
         "   $2.~~.   .~~.\n"
         "  '. \\ ' ' / .'$1\n"
@@ -1924,18 +1973,17 @@ static const FFlogo* getLogoRaspbianSmall()
         " ~ .~ (   ) ~. ~\n"
         "  (  : '~' :  )\n"
         "   '~ .~~~. ~'\n"
-        "       '~'"
-    )
+        "       '~'")
     FF_LOGO_COLORS(
-        "31", //red
-        "32" //green
+        "31", // red
+        "32"  // green
     )
-    FF_LOGO_COLOR_KEYS("31"); //red
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("31");  // red
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoReborn()
+static const FFlogo *getLogoReborn()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("reborn", "reborn-os", "rebornos", "rebornos-linux", "reborn-os-linux")
@@ -1959,18 +2007,17 @@ static const FFlogo* getLogoReborn()
         "        .:~!!!!!~~~~~~^.^~~~~~~!!!!!~:.\n"
         "         .:~!!!!!!!!!!^.^!!!!!!!!!!~:.\n"
         "          .:^!!!!!!!!!^.^!!!!!!!!!^:.\n"
-        "            :::::::::::::::::::::::\n"
-    )
+        "            :::::::::::::::::::::::\n")
     FF_LOGO_COLORS(
-        "34", //blue
-        "36" //cyan
+        "34", // blue
+        "36"  // cyan
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoRebornSmall()
+static const FFlogo *getLogoRebornSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("reborn_small", "reborn-os-small", "rebornos_small", "rebornos-linux-small", "reborn-os-linux-small")
@@ -1985,17 +2032,16 @@ static const FFlogo* getLogoRebornSmall()
         " \\    \\  /     \\  /    /\n"
         "  \\    \\/_______\\/    /\n"
         "   \\   /         \\   /\n"
-        "    \\_/___________\\_/\n"
-    )
+        "    \\_/___________\\_/\n")
     FF_LOGO_COLORS(
-        "34" //blue
+        "34" // blue
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoRedHatEnterpriseLinux()
+static const FFlogo *getLogoRedHatEnterpriseLinux()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("rhel", "redhat", "redhat-linux")
@@ -2017,17 +2063,16 @@ static const FFlogo* getLogoRedHatEnterpriseLinux()
         "      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM:\n"
         "         MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n"
         "            `MMMMMMMMMMMMMMMMMMMMMMMM:\n"
-        "                ``MMMMMMMMMMMMMMMMM'"
-    )
+        "                ``MMMMMMMMMMMMMMMMM'")
     FF_LOGO_COLORS(
-        "31" //red
+        "31" // red
     )
-    FF_LOGO_COLOR_KEYS("31"); //red
-    FF_LOGO_COLOR_TITLE("31"); //red
+    FF_LOGO_COLOR_KEYS("31");  // red
+    FF_LOGO_COLOR_TITLE("31"); // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoRedstarOS()
+static const FFlogo *getLogoRedstarOS()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("redstar", "redstar-os", "redstaros", "redstaros-linux", "redstar-os-linux")
@@ -2049,17 +2094,16 @@ static const FFlogo* getLogoRedstarOS()
         "       :lcc:'',..';::::;;;;;;;,,.\n"
         "       :cccc::::;...';;;;;,,,,,,.\n"
         "       ,::::::;;;,'.  ..',,,,'''.\n"
-        "        ........          ......"
-    )
+        "        ........          ......")
     FF_LOGO_COLORS(
-        "31" //red
+        "31" // red
     )
-    FF_LOGO_COLOR_KEYS("31"); //red
-    FF_LOGO_COLOR_TITLE("31"); //red
+    FF_LOGO_COLOR_KEYS("31");  // red
+    FF_LOGO_COLOR_TITLE("31"); // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoRockyLinux()
+static const FFlogo *getLogoRockyLinux()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("rocky", "rocky-linux", "rockylinux")
@@ -2082,17 +2126,16 @@ static const FFlogo* getLogoRockyLinux()
         "   )<>~       .mliiiiiliiiiiil,\n"
         "            _gllilililiililii~\n"
         "           giliiiiiiiiiiiiT`\n"
-        "          -^~$ililili@~~'"
-    )
+        "          -^~$ililili@~~'")
     FF_LOGO_COLORS(
-        "32" //green
+        "32" // green
     )
-    FF_LOGO_COLOR_KEYS("32"); //green
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("32");  // green
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoRosaLinux()
+static const FFlogo *getLogoRosaLinux()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("rosa", "rosa-linux", "rosalinux")
@@ -2116,17 +2159,16 @@ static const FFlogo* getLogoRosaLinux()
         "    RO   AROSAROS   AROSAROSAR   RO\n"
         "     AROS   AROSAROSAROSARO   AROS\n"
         "        ROSA               SARO\n"
-        "           ROSAROSAROSAROSAR"
-    )
+        "           ROSAROSAROSAROSAR")
     FF_LOGO_COLORS(
-        "34" //blue
+        "34" // blue
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoSlackware()
+static const FFlogo *getLogoSlackware()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("slackware", "slackware-linux", "slackwarelinux")
@@ -2151,18 +2193,17 @@ static const FFlogo* getLogoSlackware()
         "      ::::::::::::::::::::::::::::::::\n"
         "        ::::::::::::::::::::::::::::\n"
         "           ::::::::::::::::::::::\n"
-        "                ::::::::::::"
-    )
+        "                ::::::::::::")
     FF_LOGO_COLORS(
-        "34", //blue
-        "37" //white
+        "34", // blue
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("34") //blue
-    FF_LOGO_COLOR_TITLE("34") //blue
+    FF_LOGO_COLOR_KEYS("34")  // blue
+    FF_LOGO_COLOR_TITLE("34") // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoSlackwareSmall()
+static const FFlogo *getLogoSlackwareSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("slackware-small", "slackware-linux-small", "slackware_small", "slackwarelinux_small")
@@ -2173,52 +2214,50 @@ static const FFlogo* getLogoSlackwareSmall()
         "  \\______  \\\n"
         "   ______| |\n"
         "| |________/\n"
-        "|____________"
-    )
+        "|____________")
     FF_LOGO_COLORS(
-        "34" //blue
+        "34" // blue
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoSolus()
+static const FFlogo *getLogoSolus()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("solus", "solus-linux")
     FF_LOGO_LINES(
-"$2            -```````````\n"
-"          `-+/------------.`\n"
-"       .---:mNo---------------.\n"
-"     .-----yMMMy:---------------.\n"
-"   `------oMMMMMm/----------------`\n"
-"  .------/MMMMMMMN+----------------.\n"
-" .------/NMMMMMMMMm-+/--------------.\n"
-"`------/NMMMMMMMMMN-:mh/-------------`\n"
-".-----/NMMMMMMMMMMM:-+MMd//oso/:-----.\n"
-"-----/NMMMMMMMMMMMM+--mMMMh::smMmyo:--\n"
-"----+NMMMMMMMMMMMMMo--yMMMMNo-:yMMMMd/.\n"
-".--oMMMMMMMMMMMMMMMy--yMMMMMMh:-yMMMy-`\n"
-"`-sMMMMMMMMMMMMMMMMh--dMMMMMMMd:/Ny+y.\n"
-"`-/+osyhhdmmNNMMMMMm-/MMMMMMMmh+/ohm+\n"
-"  .------------:://+-/++++++$1oshddys:\n"
-"   -hhhhyyyyyyyyyyyhhhhddddhysssso-\n"
-"    `:ossssssyysssssssssssssssso:`\n"
-"      `:+ssssssssssssssssssss+-\n"
-"         `-/+ssssssssssso+/-`\n"
-"              `.-----..`\n"
-    )
+        "$2            -```````````\n"
+        "          `-+/------------.`\n"
+        "       .---:mNo---------------.\n"
+        "     .-----yMMMy:---------------.\n"
+        "   `------oMMMMMm/----------------`\n"
+        "  .------/MMMMMMMN+----------------.\n"
+        " .------/NMMMMMMMMm-+/--------------.\n"
+        "`------/NMMMMMMMMMN-:mh/-------------`\n"
+        ".-----/NMMMMMMMMMMM:-+MMd//oso/:-----.\n"
+        "-----/NMMMMMMMMMMMM+--mMMMh::smMmyo:--\n"
+        "----+NMMMMMMMMMMMMMo--yMMMMNo-:yMMMMd/.\n"
+        ".--oMMMMMMMMMMMMMMMy--yMMMMMMh:-yMMMy-`\n"
+        "`-sMMMMMMMMMMMMMMMMh--dMMMMMMMd:/Ny+y.\n"
+        "`-/+osyhhdmmNNMMMMMm-/MMMMMMMmh+/ohm+\n"
+        "  .------------:://+-/++++++$1oshddys:\n"
+        "   -hhhhyyyyyyyyyyyhhhhddddhysssso-\n"
+        "    `:ossssssyysssssssssssssssso:`\n"
+        "      `:+ssssssssssssssssssss+-\n"
+        "         `-/+ssssssssssso+/-`\n"
+        "              `.-----..`\n")
     FF_LOGO_COLORS(
-        "34", //blue
-        "37" //white
+        "34", // blue
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("37"); //white
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("37"); // white
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoSteamOS()
+static const FFlogo *getLogoSteamOS()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("steamos")
@@ -2240,54 +2279,52 @@ static const FFlogo* getLogoSteamOS()
         "    '#####+++################'\n"
         "      '*##################*'\n"
         "         ''*##########*''\n"
-        "              ''''''\n"
-    )
+        "              ''''''\n")
     FF_LOGO_COLORS(
-        "34", //blue
-        "37" //white
+        "34", // blue
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoUbuntu()
+static const FFlogo *getLogoUbuntu()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("ubuntu", "ubuntu-linux")
     FF_LOGO_LINES(
- "                            ....\n"
- "              .',:clooo:  .:looooo:.\n"
- "           .;looooooooc  .oooooooooo'\n"
- "        .;looooool:,''.  :ooooooooooc\n"
- "       ;looool;.         'oooooooooo,\n"
- "      ;clool'             .cooooooc.  ,,\n"
- "         ...                ......  .:oo,\n"
- "  .;clol:,.                        .loooo'\n"
- " :ooooooooo,                        'ooool\n"
- "'ooooooooooo.                        loooo.\n"
- "'ooooooooool                         coooo.\n"
- " ,loooooooc.                        .loooo.\n"
- "   .,;;;'.                          ;ooooc\n"
- "       ...                         ,ooool.\n"
- "    .cooooc.              ..',,'.  .cooo.\n"
- "      ;ooooo:.           ;oooooooc.  :l.\n"
- "       .coooooc,..      coooooooooo.\n"
- "         .:ooooooolc:. .ooooooooooo'\n"
- "           .':loooooo;  ,oooooooooc\n"
- "               ..';::c'  .;loooo:'\n"
- "                             ."
-    )
+        "                            ....\n"
+        "              .',:clooo:  .:looooo:.\n"
+        "           .;looooooooc  .oooooooooo'\n"
+        "        .;looooool:,''.  :ooooooooooc\n"
+        "       ;looool;.         'oooooooooo,\n"
+        "      ;clool'             .cooooooc.  ,,\n"
+        "         ...                ......  .:oo,\n"
+        "  .;clol:,.                        .loooo'\n"
+        " :ooooooooo,                        'ooool\n"
+        "'ooooooooooo.                        loooo.\n"
+        "'ooooooooool                         coooo.\n"
+        " ,loooooooc.                        .loooo.\n"
+        "   .,;;;'.                          ;ooooc\n"
+        "       ...                         ,ooool.\n"
+        "    .cooooc.              ..',,'.  .cooo.\n"
+        "      ;ooooo:.           ;oooooooc.  :l.\n"
+        "       .coooooc,..      coooooooooo.\n"
+        "         .:ooooooolc:. .ooooooooooo'\n"
+        "           .':loooooo;  ,oooooooooc\n"
+        "               ..';::c'  .;loooo:'\n"
+        "                             .")
     FF_LOGO_COLORS(
-        "31", //red
-        "37" //white
+        "31", // red
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("31"); //red
-    FF_LOGO_COLOR_TITLE("31"); //red
+    FF_LOGO_COLOR_KEYS("31");  // red
+    FF_LOGO_COLOR_TITLE("31"); // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoUbuntuOld()
+static const FFlogo *getLogoUbuntuOld()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("ubuntu_old", "ubuntu-linux_old")
@@ -2311,18 +2348,17 @@ static const FFlogo* getLogoUbuntuOld()
         "    .ossssssssssssssssss$2dMMMNy$1sssso.\n"
         "     -+sssssssssssssssss$2yyy$1ssss+-\n"
         "       `:+ssssssssssssssssss+:`\n"
-        "           .-/+oossssoo+/-."
-    )
+        "           .-/+oossssoo+/-.")
     FF_LOGO_COLORS(
-        "31", //red
-        "37" //white
+        "31", // red
+        "37"  // white
     )
-    FF_LOGO_COLOR_KEYS("31"); //red
-    FF_LOGO_COLOR_TITLE("31"); //red
+    FF_LOGO_COLOR_KEYS("31");  // red
+    FF_LOGO_COLOR_TITLE("31"); // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoUbuntuSmall()
+static const FFlogo *getLogoUbuntuSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("ubuntu_small", "ubuntu-linux-small")
@@ -2332,50 +2368,48 @@ static const FFlogo* getLogoUbuntuSmall()
         " _/  ---  \\\n"
         "(_) |   |\n"
         "  \\  --- _/\n"
-        "     ---(_)"
-    )
+        "     ---(_)")
     FF_LOGO_COLORS(
-        "31" //red
+        "31" // red
     )
-    FF_LOGO_COLOR_KEYS("31"); //red
-    FF_LOGO_COLOR_TITLE("31"); //red
+    FF_LOGO_COLOR_KEYS("31");  // red
+    FF_LOGO_COLOR_TITLE("31"); // red
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoVanilla()
+static const FFlogo *getLogoVanilla()
 {
 
     FF_LOGO_INIT
-    FF_LOGO_NAMES("vanilla", "vanilla-os","vanilla-linux");
+    FF_LOGO_NAMES("vanilla", "vanilla-os", "vanilla-linux");
     FF_LOGO_LINES(
-"                .----: \n"
-"              .-------.\n"
-"             :---::----:\n"
-"            .----::-----.\n"
-"  .........  :----::-----: ..:::-::::..\n"
-".-----------------::------------------:\n"
-" ----::-----------::----------::::---:\n"
-"  -----:::--------::-------:::-------\n"
-"   :------::::--::...:::::---------:\n"
-"    .---------::..    ..:---------.\n"
-"      .::-----::..    .::----::.\n"
-"        .:------:.......:-------:\n"
-"       .--------::::::::-:::-------.\n"
-"      .-------::-----.:-----::------.\n"
-"     -----::------:   :------::-----\n"
-"    :--::--------:     .-------::---:\n"
-"   :----------::         .:----------\n"
-"    :--------:             :--------:"
-    )
+        "                .----: \n"
+        "              .-------.\n"
+        "             :---::----:\n"
+        "            .----::-----.\n"
+        "  .........  :----::-----: ..:::-::::..\n"
+        ".-----------------::------------------:\n"
+        " ----::-----------::----------::::---:\n"
+        "  -----:::--------::-------:::-------\n"
+        "   :------::::--::...:::::---------:\n"
+        "    .---------::..    ..:---------.\n"
+        "      .::-----::..    .::----::.\n"
+        "        .:------:.......:-------:\n"
+        "       .--------::::::::-:::-------.\n"
+        "      .-------::-----.:-----::------.\n"
+        "     -----::------:   :------::-----\n"
+        "    :--::--------:     .-------::---:\n"
+        "   :----------::         .:----------\n"
+        "    :--------:             :--------:")
     FF_LOGO_COLORS(
-        "33" //yellow
+        "33" // yellow
     )
-    FF_LOGO_COLOR_KEYS("33"); // yellow
+    FF_LOGO_COLOR_KEYS("33");  // yellow
     FF_LOGO_COLOR_TITLE("33"); // yellow
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoVoid()
+static const FFlogo *getLogoVoid()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("void", "void-linux")
@@ -2397,18 +2431,17 @@ static const FFlogo* getLogoVoid()
         "        -Invnvvnsi..___..=sv=.     `\n"
         "          +Invnvnvnnnnnnnnvvnn;.\n"
         "            ~|Invnvnvvnvvvnnv}+`\n"
-        "               -~|{*l}*|~"
-    )
+        "               -~|{*l}*|~")
     FF_LOGO_COLORS(
-        "32", //green
-        "30" //black
+        "32", // green
+        "30"  // black
     )
-    FF_LOGO_COLOR_KEYS("37"); //white
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("37");  // white
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoVoidSmall()
+static const FFlogo *getLogoVoidSmall()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("void_small", "void-linux-small")
@@ -2419,17 +2452,16 @@ static const FFlogo* getLogoVoidSmall()
         "| | /   \\ | |\n"
         "| | \\___/ | |\n"
         "| \\______ \\_|\n"
-        " -_______\\"
-    )
+        " -_______\\")
     FF_LOGO_COLORS(
-        "32" //green
+        "32" // green
     )
-    FF_LOGO_COLOR_KEYS("37"); //white
-    FF_LOGO_COLOR_TITLE("32"); //green
+    FF_LOGO_COLOR_KEYS("37");  // white
+    FF_LOGO_COLOR_TITLE("32"); // green
     FF_LOGO_RETURN
 }
 
-static const FFlogo* getLogoZorin()
+static const FFlogo *getLogoZorin()
 {
     FF_LOGO_INIT
     FF_LOGO_NAMES("zorin", "zorin-linux", "zorinos", "zorinos-linux")
@@ -2450,17 +2482,16 @@ static const FFlogo* getLogoZorin()
         "\n"
         "      .+oooooooooooooooooooooooo+.\n"
         "       -osssssssssssssssssssssso-\n"
-        "        `osssssssssssssssssssso`"
-    )
+        "        `osssssssssssssssssssso`")
     FF_LOGO_COLORS(
-        "34" //blue
+        "34" // blue
     )
-    FF_LOGO_COLOR_KEYS("34"); //blue
-    FF_LOGO_COLOR_TITLE("34"); //blue
+    FF_LOGO_COLOR_KEYS("34");  // blue
+    FF_LOGO_COLOR_TITLE("34"); // blue
     FF_LOGO_RETURN
 }
 
-GetLogoMethod* ffLogoBuiltinGetAll()
+GetLogoMethod *ffLogoBuiltinGetAll()
 {
     static GetLogoMethod logoMethods[] = {
         ffLogoBuiltinGetUnknown,
@@ -2495,6 +2526,8 @@ GetLogoMethod* ffLogoBuiltinGetAll()
         getLogoFreeBSD,
         getLogoGaruda,
         getLogoGarudaSmall,
+        getLogoGarudaDragonized,
+        getLogoGarudaEagle,
         getLogoGentoo,
         getLogoGentooSmall,
         getLogoKDENeon,
@@ -2545,8 +2578,7 @@ GetLogoMethod* ffLogoBuiltinGetAll()
         getLogoVoid,
         getLogoVoidSmall,
         getLogoZorin,
-        NULL
-    };
+        NULL};
 
     return logoMethods;
 }
